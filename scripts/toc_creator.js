@@ -8,9 +8,12 @@ let toc_container = document.createElement('div');
 toc_container.classList.add('toc_container');
 
 let toc_title = document.createElement('h1')
+toc_title.classList.add('toc_title');
 toc_title.innerText = "Table of content";
 
+toc_title.addEventListener('click', toggle_toc)
 let toc_content = document.createElement('ul');
+toc_content.classList.add('hide');
 
 titles.forEach((title, key) => {
     let toc_entry = document.createElement('li');
@@ -28,3 +31,8 @@ document.querySelectorAll('.toc_container li').forEach((li) => {
         titles[event.target.dataset.key].scrollIntoView({ behavior: "smooth"});
     })
 })
+
+
+function toggle_toc(event) {
+    event.target.nextElementSibling.classList.toggle('hide');
+}
